@@ -17,17 +17,23 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from .serializers import InboundSMSSerializer
+from .serializers import OutboundSMSSerializer
 
 
 class InboundSMS(APIView):
 
     def post(self, request):
-        return Response({'type':'inbound'},
+        inbound_serializer = InboundSMSSerializer(data=request.data)
+        inbound_serializer.is_valid(raise_exception=True)
+        return Response({'message':'inbound sms is ok', "error":""},
                         status=HTTP_200_OK)
+
 
 class OutboundSMS(APIView):
 
     def post(self, request):
-        return Response({'type': 'outbound'},
+        outbound_serializer = OutboundSMSSerializer(request.data)
+        outbound_serializer.is_valid(raise_exception=True)
+        return Response({'message':'outbound sms is ok', "error":""},
                         status=HTTP_200_OK)
