@@ -131,7 +131,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated', ),
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
-    )
+    ),
+    # 'EXCEPTION_HANDLER': 'my_project.my_app.utils.custom_exception_handler',
+    'EXCEPTION_HANDLER': 'sms.custom_exceptions.custom_exception_handler'
 }
 
 
