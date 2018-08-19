@@ -1,0 +1,5 @@
+Django==2.1
+django-redis==4.9.0
+djangorestframework==3.8.2
+pytz==2018.5
+redis==2.10.6

@@ -1,15 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
-
-from django.shortcuts import render
-
-# Create your views here.
-from django.contrib.auth import authenticate
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.authtoken.models import Token
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
 from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
@@ -17,23 +5,26 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import InboundSMSSerializer
-from .serializers import OutboundSMSSerializer
-
+from .helpers import InboundSmsHelper, OutboundSmsHelper, CacheHelper
 
 class InboundSMS(APIView):
 
     def post(self, request):
-        inbound_serializer = InboundSMSSerializer(data=request.data)
-        inbound_serializer.is_valid(raise_exception=True)
-        return Response({'message':'inbound sms is ok', "error":""},
+        data = request.data
+        InboundSmsHelper().validate(data)
+        CacheHelper().set(data=data)
+        return Response({'message':'inbound sms is ok' , "error":""},
                         status=HTTP_200_OK)
-
 
 class OutboundSMS(APIView):
 
     def post(self, request):
-        outbound_serializer = OutboundSMSSerializer(request.data)
-        outbound_serializer.is_valid(raise_exception=True)
+        data = request.data
+        OutboundSmsHelper().validate(data=data)
+        if CacheHelper().get(data=data):
+            error_message = 'sms from {_from} and to {_to} blocked by STOP request'.format(
+                                 _from=data.get('from'), _to=data.get('to'))
+            return Response({'message': '','error': error_message},
+                            status=HTTP_400_BAD_REQUEST)
         return Response({'message':'outbound sms is ok', "error":""},
                         status=HTTP_200_OK)
