@@ -6,6 +6,7 @@ from rest_framework.status import (
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .helpers import InboundSmsHelper, OutboundSmsHelper, CacheHelper
+from .throttle import FromThrottle
 
 class InboundSMS(APIView):
 
@@ -16,7 +17,9 @@ class InboundSMS(APIView):
         return Response({'message':'inbound sms is ok' , "error":""},
                         status=HTTP_200_OK)
 
+
 class OutboundSMS(APIView):
+    throttle_classes = (FromThrottle, )
 
     def post(self, request):
         data = request.data
