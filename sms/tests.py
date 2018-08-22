@@ -9,50 +9,6 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 
 
-# class UserSignup(unittest.TestCase):
-#
-#     def setUp(self):
-#         # Every test needs a client.
-#         self.client = Client()
-#
-#     def test_correct_user_signup(self):
-#         # Issue a GET request.
-#         data = {
-#             "username": "hello",
-#             "password": "HelloWorld",
-#             "email": "hello@example.com"
-#         }
-#
-#         response = self.client.post('/users/signup/',data=data, content_type='application/json')
-#
-#         # Check that the response is 200 OK.
-#         self.assertEqual(response.status_code, 200)
-#
-#         # Check if user successfully created
-#         self.assertEqual(response.data, {'error': '', 'message': {'success': True, 'user_id': 1}})
-#
-#
-#     def test_invalid_user_signup(self):
-#         # Issue a GET request.
-#         data = {
-#             "password": "HelloWorld",
-#             "email": "hello@example.com"
-#         }
-#
-#
-#         response = self.client.post('/users/signup/', data=data,
-#                                     content_type='application/json')
-#
-#         # Check that the response is 200 OK.
-#         self.assertEqual(response.status_code, 200)
-#
-#         # Check if user successfully created
-#         self.assertEqual(response.data, {'error': '',
-#                                          'message': {'success': True,
-#                                                      'user_id': 1}})
-#
-
-
 
 INBOUND_VALID_DATA = { "to": "123456789", "from":"987654321", "text":"Hello World"}
 INBOUND_VALID_RESPONSE = { "message": "inbound sms is ok", "error": "" }
