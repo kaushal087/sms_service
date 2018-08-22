@@ -53,7 +53,8 @@ class SignUp(APIView):
                  'error': 'User with given information already exist'},
                 status=HTTP_400_BAD_REQUEST)
 
-        user = User(username=username, password=password, email=email)
+        user = User.objects.create(username='test_user1', email=email)
+        user.set_password('12345')
         user.save()
 
         return Response({'message':{'user_id': user.id, 'success': True}, 'error':''})
