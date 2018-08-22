@@ -139,13 +139,15 @@ REST_FRAMEWORK = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://redis-17306.c9.us-east-1-2.ec2.cloud.redislabs.com:17306/0",
         "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": "a6rndVCgSuADnoBCFN4vtP7UfEj7KgEt",
         },
         "KEY_PREFIX": "sms"
     }
 }
+
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
