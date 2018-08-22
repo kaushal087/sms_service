@@ -18,6 +18,13 @@ class InOutboundSMSSerializer(serializers.Serializer):
         self.fields['text'].error_messages[
             'required'] = 'text is missing'
 
+        self.fields['to'].error_messages[
+            'blank'] = 'to is invalid'
+        self.fields['from'].error_messages[
+            'blank'] = 'from is invalid'
+        self.fields['text'].error_messages[
+            'blank'] = 'text is invalid'
+
     def validate_to(self, to, *args, **kwargs):
         if len(to) < 6 or len(to) > 16:
             raise serializers.ValidationError("to is invalid")
