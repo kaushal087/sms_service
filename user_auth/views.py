@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 
 # Create your views here.
@@ -13,7 +14,7 @@ from rest_framework.status import (
 )
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from django.contrib.auth.models import User
 
 class Login(APIView):
     permission_classes = (AllowAny,)
@@ -32,3 +33,27 @@ class Login(APIView):
         token, _ = Token.objects.get_or_create(user=user)
         return Response({'token': token.key},
                         status=HTTP_200_OK)
+
+class SignUp(APIView):
+    permission_classes = (AllowAny, )
+
+    def post(self, request):
+        username = request.data.get("username")
+        password = request.data.get("password")
+        email = request.data.get("email")
+        if username is None or password is None or email is None:
+            return Response(
+                {'message': '', 'error': 'Please provide username, password and email'},
+                status=HTTP_400_BAD_REQUEST)
+
+        user = User.objects.filter(Q(username=username) | Q(email=email)).first()
+        if user:
+            return Response(
+                {'message': '',
+                 'error': 'User with given information already exist'},
+                status=HTTP_400_BAD_REQUEST)
+
+        user = User(username=username, password=password, email=email)
+        user.save()
+
+        return Response({'message':{'user_id': user.id, 'success': True}, 'error':''})
