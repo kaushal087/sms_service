@@ -161,11 +161,11 @@ STATICFILES_DIRS = (
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+import dj_database_url
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default='postgres://geonmtwgtkryrd:26325669bb97acf48d55b22649519dc835c90f68c5459b6e8ebfc7e99a65fe1b@ec2-54-243-216-33.compute-1.amazonaws.com:5432/dc7sctus43t830'
     )
 }
