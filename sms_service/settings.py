@@ -132,7 +132,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
     ),
-    'EXCEPTION_HANDLER': 'sms.custom_exceptions.custom_exception_handler'
+    # 'EXCEPTION_HANDLER': 'sms.custom_exceptions.custom_exception_handler'
 }
 
 
