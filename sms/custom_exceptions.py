@@ -16,5 +16,9 @@ def custom_exception_handler(exc, context):
     if not isinstance(exc, Throttled) and not isinstance(exc, ValidationError):
         custom_response_data = {"message": "","error": "unknown failure"}
         response.data = custom_response_data
-    # if isinstance(exc, ValidationError)
+
+    if isinstance(exc, ValidationError):
+        custom_response_data = {"message": "", "error": response.data}
+        response.data = custom_response_data
+
     return response
