@@ -1,18 +1,17 @@
 from django.core.cache import cache
-from .serializers import InboundSMSSerializer
-from .serializers import OutboundSMSSerializer
+from .serializers import InOutboundSMSSerializer
 
 
 class InboundSmsHelper(object):
 
     def validate(self, data, *args, **kwargs):
-        inbound_serializer = InboundSMSSerializer(data=data)
+        inbound_serializer = InOutboundSMSSerializer(data=data)
         inbound_serializer.is_valid(raise_exception=True)
 
 class OutboundSmsHelper(object):
 
     def validate(self, data, *args, **kwargs):
-        outbound_serializer = OutboundSMSSerializer(data=data)
+        outbound_serializer = InOutboundSMSSerializer(data=data)
         outbound_serializer.is_valid(raise_exception=True)
 
 class CacheHelper(object):
