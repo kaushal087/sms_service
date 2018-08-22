@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rpxwyx#!9c3d36s^=-4-at^*(w2r4ea-zwr*+15u+1hpju*lp@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['plivo-sms-kaushal.herokuapp.com', 'localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -132,7 +132,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
     ),
-    # 'EXCEPTION_HANDLER': 'sms.custom_exceptions.custom_exception_handler'
+    'EXCEPTION_HANDLER': 'sms.custom_exceptions.custom_exception_handler'
 }
 
 
