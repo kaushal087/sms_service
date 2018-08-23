@@ -58,7 +58,7 @@ Collectstatic:
 runserver:
     python manage.py runserver
 
-# Set os environment variable as well which is given in .env file, (I have set through heroku dashboard)
+Set os environment variable as well which is given in .env file, (I have set through heroku dashboard)
 
-# Postman collection link:
+Postman collection link:
     https://www.getpostman.com/collections/a77d6e19f2094129e3a8
