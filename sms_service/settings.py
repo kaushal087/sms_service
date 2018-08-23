@@ -137,13 +137,16 @@ REST_FRAMEWORK = {
 }
 
 
+REDIS_LOCATION = os.environ.get('REDIS_LOCATION')
+REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD')
+
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis-17306.c9.us-east-1-2.ec2.cloud.redislabs.com:17306/0",
+        "LOCATION": REDIS_LOCATION,
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "PASSWORD": "a6rndVCgSuADnoBCFN4vtP7UfEj7KgEt",
+            "PASSWORD": REDIS_PASSWORD,
         },
         "KEY_PREFIX": "sms"
     }
@@ -163,9 +166,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 
 import dj_database_url
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://geonmtwgtkryrd:26325669bb97acf48d55b22649519dc835c90f68c5459b6e8ebfc7e99a65fe1b@ec2-54-243-216-33.compute-1.amazonaws.com:5432/dc7sctus43t830'
+        default=DATABASE_URL
     )
 }
