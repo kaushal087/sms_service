@@ -57,7 +57,7 @@ Github Link:
 
 # Deployment Instructions:
 
-cd project directory:
+Come to  project directory:
 
     cd sms_service
 
@@ -69,7 +69,7 @@ Activate virtual environment:
 
     source env/bin/activate
 
-install requirement:
+Install requirement:
 
     pip3 install -r requirement.txt
 
@@ -77,7 +77,7 @@ Collectstatic:
 
     python manage.py collectstatic
 
-runserver:
+Runserver:
 
     python manage.py runserver
 
