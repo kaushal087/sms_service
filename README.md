@@ -27,6 +27,16 @@ Features:
 
      -> Unit Test for both API /inbound/sms/ and /outbound/sms/
 
+Technical Features:
+
+    REST API
+    Authenticaiton/Authorization
+    Validation
+    Caching
+    Throttling
+    Exception Handling
+    Testing
+    Deployment
 
 Major Language, framework and libraries used:
 
@@ -45,7 +55,7 @@ Github Link:
 
 
 
-#Deployment Instructions:
+# Deployment Instructions:
 
 cd project directory:
 
@@ -72,10 +82,12 @@ runserver:
     python manage.py runserver
 
 
-
 Postman collection link:
 
     https://www.getpostman.com/collections/a77d6e19f2094129e3a8
 
+Heroku App link:
+
+    https://plivo-sms-kaushal.herokuapp.com
 
 # Set os environment variable as well which is given in .env file, (I have set through heroku dashboard)
