@@ -45,20 +45,20 @@ Github Link:
 
 Deployment Instructions:
 
-# cd project directory
-cd sms_service
-# Create virtual environment
-virtualenv -p python3 env
-# Activate virtual environment
-source env/bin/activate
-# install requirement
-pip3 install -r requirement.txt
-# collectstatic
-python manage.py collectstatic
-#runserver
-python manage.py runserver
+cd project directory:
+    cd sms_service
+Create virtual environment:
+    virtualenv -p python3 env
+Activate virtual environment:
+    source env/bin/activate
+install requirement:
+    pip3 install -r requirement.txt
+Collectstatic:
+    python manage.py collectstatic
+runserver:
+    python manage.py runserver
 
 # Set os environment variable as well which is given in .env file, (I have set through heroku dashboard)
 
 # Postman collection link:
-https://www.getpostman.com/collections/a77d6e19f2094129e3a8
+    https://www.getpostman.com/collections/a77d6e19f2094129e3a8
