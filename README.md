@@ -90,4 +90,4 @@ Heroku App link:
 
     https://plivo-sms-kaushal.herokuapp.com
 
-# Set os environment variable as well which is given in .env file, (I have set through heroku dashboard)
+# Set os environment variable as well which is given in env.py file, (I have set through heroku dashboard)
